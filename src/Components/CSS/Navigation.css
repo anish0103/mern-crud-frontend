@@ -1,0 +1,36 @@
+.header-maincontainer {
+    width: 99.75%;
+    height: 47.5px;
+    display: flex;
+    background-color: #feffff;
+    align-items: center;
+    border: 1.5px solid #e1e4e5;
+}
+
+.header-projectname {
+    width: 50%;
+    padding: 10px;
+}
+
+.header-button {
+    padding: 10px;
+    width: 50%;
+}
+
+.header-button a {
+    float: right;
+    padding: 6px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    background-color: #2f313e ;
+    transition-duration: 0.4s;
+}
+
+.header-button a:hover {
+    transform: scale(1.06);
+}
