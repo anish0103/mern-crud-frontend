@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import Navigation from './Components/Navigation';
 import HomePage from './Pages/HomePage';
 import AddPage from './Pages/AddPage';
+import EditPage from './Pages/EditPage';
 
 function App() {
 
@@ -15,17 +16,30 @@ function App() {
     })
   }
 
-  console.log(UserData)
-  
+  const DeleteHandler = (d) => {
+    const Data = UserData.filter((data)=> data.id !== d);
+    SetUserData(Data);
+  }
+
+  const UpdateHandler = (d) => {
+    console.log(d);
+    const Data = UserData.filter((data)=> data.PhoneNo !== d.PhoneNo);
+    Data.push(d)
+    Data.filter((data)=> console.log(data));
+  }
+
   return (
     <Router>
       <Navigation />
       <Switch>
         <Route path="/" exact>
-          <HomePage Data={UserData} />
+          <HomePage Data={UserData} DeleteHandler={DeleteHandler} />
         </Route>
         <Route path="/add/" exact >
           <AddPage SubmitHandler={SubmitHandler} />
+        </Route>
+        <Route path="/:params/" exact >
+          <EditPage Data={UserData} UpdateHandler={UpdateHandler} />
         </Route>
         <Redirect to="/" />
       </Switch>

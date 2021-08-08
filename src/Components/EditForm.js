@@ -1,16 +1,20 @@
 import { React, useState } from 'react'
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 
 import './CSS/Form.css'
 
-function Form(Probs) {
+function EditForm(Probs) {
+
+    const paramdata = useParams()
+    
+    const Data = Probs.Data.filter((data)=> data.id.toString() === paramdata.params)
 
     const namevalid = "^[a-zA-Z.,?\\s]*$";
     const emailvalid = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    const [Name, SetName] = useState('');
-    const [PhoneNo, SetPhoneNo] = useState('');
-    const [Email, SetEmail] = useState('');
+    const [Name, SetName] = useState(Data[0].Name);
+    const [PhoneNo, SetPhoneNo] = useState(Data[0].PhoneNo);
+    const [Email, SetEmail] = useState(Data[0].Email);
     const [Valid, SetValid] = useState(true)
     const [Close, SetClose] = useState(false)
 
@@ -23,7 +27,6 @@ function Form(Probs) {
     const Emailhandler = (e) => {
         SetEmail(e.target.value)
     }
-
     
     const Submithandler = (e) => {
         e.preventDefault();
@@ -32,14 +35,13 @@ function Form(Probs) {
             return
         }
         const data = {id: Math.random(), Name: Name, PhoneNo: PhoneNo, Email: Email }
-        Probs.SubmitHandler(data)
+        Probs.UpdateHandler(data)
         SetName('')
         SetPhoneNo('')
         SetEmail('')
         SetValid(true)
         SetClose(true)
     }
-
 
     return (
         <div className='add-formcontainer'>
@@ -63,4 +65,4 @@ function Form(Probs) {
     )
 }
 
-export default Form;
+export default EditForm;

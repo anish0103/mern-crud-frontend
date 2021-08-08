@@ -49,6 +49,7 @@
     height: 20%;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .formcontainer .formbutton {
