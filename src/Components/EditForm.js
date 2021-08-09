@@ -7,7 +7,7 @@ function EditForm(Probs) {
 
     const paramdata = useParams()
     
-    const Data = Probs.Data.filter((data)=> data.id.toString() === paramdata.params)
+    const Data = Probs.Data.filter((data)=> data._id === paramdata.params)
 
     const namevalid = "^[a-zA-Z.,?\\s]*$";
     const emailvalid = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -34,7 +34,7 @@ function EditForm(Probs) {
             SetValid(false)
             return
         }
-        const data = {id: Math.random(), Name: Name, PhoneNo: PhoneNo, Email: Email }
+        const data = {id: Data[0]._id, Name: Name, PhoneNo: PhoneNo, Email: Email }
         Probs.UpdateHandler(data)
         SetName('')
         SetPhoneNo('')

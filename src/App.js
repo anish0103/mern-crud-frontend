@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import Navigation from './Components/Navigation';
@@ -10,22 +10,60 @@ function App() {
 
   const [UserData, SetUserData] = useState([])
 
-  const SubmitHandler = (data) => {
-    SetUserData((prev) => {
-      return [...prev, data]
+  const GetInformation = async () => {
+    const response = await fetch('http://localhost/api/')
+    const data = await response.json()
+    SetUserData(data);
+  }
+
+  useEffect(() => {
+    const GetUsers = async () => {
+      const response = await fetch('http://localhost/api/')
+      const data = await response.json()
+      SetUserData(data);
+    }
+    GetUsers();
+  }, [])
+
+  const AddInformation = async (data) => {
+    const response = await fetch('http://localhost/api/', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      }
     })
+    GetInformation();
+  }
+
+  const DeleteInformation = async (data) => {
+    const response = await fetch(`http://localhost/api/delete/${data}/`, {
+      method: 'POST'
+    })
+    GetInformation();
+  }
+
+  const UpdateInformation = async (data) => {
+    const response = await fetch(`http://localhost/api/update/${data.id}/`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    GetInformation();
+  }
+
+  const SubmitHandler = (data) => {
+    AddInformation(data);
   }
 
   const DeleteHandler = (d) => {
-    const Data = UserData.filter((data)=> data.id !== d);
-    SetUserData(Data);
+    DeleteInformation(d);
   }
 
   const UpdateHandler = (d) => {
-    console.log(d);
-    const Data = UserData.filter((data)=> data.PhoneNo !== d.PhoneNo);
-    Data.push(d)
-    Data.filter((data)=> console.log(data));
+    UpdateInformation(d);
   }
 
   return (

@@ -31,7 +31,7 @@ function Form(Probs) {
             SetValid(false)
             return
         }
-        const data = {id: Math.random(), Name: Name, PhoneNo: PhoneNo, Email: Email }
+        const data = { Name: Name, PhoneNo: PhoneNo, Email: Email }
         Probs.SubmitHandler(data)
         SetName('')
         SetPhoneNo('')
