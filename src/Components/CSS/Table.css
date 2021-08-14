@@ -23,7 +23,6 @@
 }
 
 .tablemaincontainer button {
-    padding: 6px;
     border: none;
     margin: 7px;
     cursor: pointer;
@@ -35,7 +34,30 @@
     width: 20px;
 }
 
+.actioncontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .tablemaincontainer .deletebutton {
     height: 25px;
     width: 25px;
+}
+
+@media screen and (max-width:450px) {
+    .tablemaincontainer {
+        font-size: 12px;
+        width: 140%;
+    }
+
+    .tablemaincontainer .deletebutton {
+        height: 20px;
+        width: 20px;
+    }
+
+    .tablemaincontainer img {
+        height: 15px;
+        width: 15px;
+    }
 }

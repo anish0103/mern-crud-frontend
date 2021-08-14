@@ -18,7 +18,7 @@ function Table(Probs) {
                 <td>{data.Name}</td>
                 <td>{data.PhoneNo}</td>
                 <td>{data.Email}</td>
-                <td><Link to={`/${data._id}/`}><img src={Edit} alt={`Edit Image${index}`} title="Edit" /></Link><button><img onClick={() => { Probs.DeleteHandler(data._id) }} className="deletebutton" src={Delete} alt={`Delete Image${index}`} title="Delete" /></button></td>
+                <td className="actioncoma"><Link to={`/${data._id}/`}><img src={Edit} alt={`Edit Image${index}`} title="Edit" /></Link><button><img onClick={() => { Probs.DeleteHandler(data._id) }} className="deletebutton" src={Delete} alt={`Delete Image${index}`} title="Delete" /></button></td>
             </tr>))}
         </table>
     )

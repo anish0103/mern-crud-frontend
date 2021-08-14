@@ -7,3 +7,9 @@
     align-items: center;
     text-align: center;
 }
+
+@media screen and (max-width:450px) {
+    .addpage-maincontainer {
+        height: 84vh;
+    }
+}

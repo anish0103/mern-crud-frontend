@@ -11,14 +11,14 @@ function App() {
   const [UserData, SetUserData] = useState([])
 
   const GetInformation = async () => {
-    const response = await fetch('http://localhost/api/')
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/')
     const data = await response.json()
     SetUserData(data);
   }
 
   useEffect(() => {
     const GetUsers = async () => {
-      const response = await fetch('http://localhost/api/')
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/')
       const data = await response.json()
       SetUserData(data);
     }
@@ -26,7 +26,7 @@ function App() {
   }, [])
 
   const AddInformation = async (data) => {
-    const response = await fetch('http://localhost/api/', {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -37,14 +37,14 @@ function App() {
   }
 
   const DeleteInformation = async (data) => {
-    const response = await fetch(`http://localhost/api/delete/${data}/`, {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + `/api/delete/${data}/`, {
       method: 'POST'
     })
     GetInformation();
   }
 
   const UpdateInformation = async (data) => {
-    const response = await fetch(`http://localhost/api/update/${data.id}/`, {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + `/api/update/${data.id}/`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
