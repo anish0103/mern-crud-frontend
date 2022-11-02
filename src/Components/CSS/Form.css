@@ -1,95 +1,74 @@
-.add-formcontainer {
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    height: 91vh;
-}
-
-
-.formcontainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-}
-
-.formcontainer form {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    width: 500px;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    background-color: #2f313e;
-    border-radius: 13px;
-}
-
-.formcontainer form input {
-    padding: 10px;
-    width: 70%;
-    color: black;
-    outline: none;
-    margin: 10px;
-    border: none;
-    background-color: rgb(230, 230, 230);
-    border-radius: 8px;
-}
-
-.formcontainer label {
-    width: 73%;
-    text-align: left;
-}
-
-.formcontainer-buttoncontainer {
-    display: flex;
+.formpage-maincontainer {
     width: 100%;
-    height: 20%;
+    height: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
-.formcontainer .formbutton {
-    padding: 7px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin: 12px;
-    width: 11%;
-    font-size: 14px;
+.formpage-container {
+    width: 90%;
+    height: 100%;
+}
+
+.formpage-container form {
+    display: flex;
+    flex-direction: column;
+    background-color: #0a323f;
+    padding: 10px;
+    border-radius: 8px
+}
+
+.formpage-container label {
+    margin: 5px 0;
+    font-size: 15px;
+    color: #6c8b92
+}
+
+.formpage-container input {
+    padding: 8px;
+    font-size: 15px;
     border: none;
-    background-color: rgb(230, 230, 230);
-    border-radius: 6px;
+    outline: none;
+    border-radius: 8px;
+    margin: 5px 0;
+    background-color: #a4bbbf
+}
+
+.formpage-namecontainer {
+    height: 80px;
+    font-size: 20px;
+    color: #bc8400;
+    display: flex;
+    align-items: center;
+}
+
+.formpage-container a {
+    border-radius: 8px;
     text-decoration: none;
-    color: #2f313e;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #6c8b92;
+}
+
+.formpage-container button, .formpage-formbutton {
+    background-color: #bc8400 !important;
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.formpage-buttonaction {
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+
+.formpage-container button:hover, .formpage-formbutton:hover {
     cursor: pointer;
-    font-weight: bold;
-}
-
-.formcontainer button:hover {
-    color: #000000;
-}
-
-@media screen and (max-width:450px) {
-    .add-formcontainer {
-        height: 84vh;
-    }
-
-    .formcontainer form {
-        width: 300px;
-    }
-
-    .formcontainer form input {
-        width: 80%;
-    }
-
-    .formcontainer label {
-        width: 83%;
-    }
-
-    .contact-formcontainer {
-        height: 84vh;
-    }
 }

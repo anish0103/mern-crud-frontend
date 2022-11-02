@@ -1,0 +1,50 @@
+.customercard {
+    margin: 10px;
+    width: 250px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 8px;
+    background-color: #0a323f;
+    color: #6c8b92;
+}
+
+.customercard img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+
+.customercard a,
+.customercard-deletebutton {
+    width: 75px;
+    margin: 0px 3px;
+    outline: none;
+    font-weight: 400 !important;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.customercard a:hover {
+    cursor: pointer;
+}
+
+.customercard-editbutton {
+    border: 2px solid #bc8400;
+}
+
+.customercard-deletebutton {
+    border: 2px solid #f56d6d;
+}
+
+.customercard p {
+    width: 80%;
+    text-align: center;
+    word-wrap: break-word;
+}

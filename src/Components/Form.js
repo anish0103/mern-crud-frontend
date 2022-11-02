@@ -1,12 +1,14 @@
 import { React, useState } from 'react'
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import './CSS/Form.css'
 
-function Form(Probs) {
+function Form(props) {
 
     const namevalid = "^[a-zA-Z.,?\\s]*$";
     const emailvalid = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    const history = useHistory();
 
     const [Name, SetName] = useState('');
     const [PhoneNo, SetPhoneNo] = useState('');
@@ -24,7 +26,7 @@ function Form(Probs) {
         SetEmail(e.target.value)
     }
 
-    
+
     const Submithandler = (e) => {
         e.preventDefault();
         if (!Name.match(namevalid) || PhoneNo.length > 10 || PhoneNo.length < 10 || !Email.match(emailvalid)) {
@@ -32,29 +34,33 @@ function Form(Probs) {
             return
         }
         const data = { Name: Name, PhoneNo: PhoneNo, Email: Email }
-        Probs.SubmitHandler(data)
         SetName('')
         SetPhoneNo('')
         SetEmail('')
         SetValid(true)
         SetClose(true)
+        props.SubmitHandler(data)
+        history.push('/')
     }
 
 
     return (
-        <div className='add-formcontainer'>
-            <div className='formcontainer'>
+        <div class="formpage-maincontainer">
+            <div class="formpage-container">
+                <div class="formpage-namecontainer">
+                    Create Customer
+                </div>
                 <form>
-                    {!Valid && <p>Please Enter Valid Details!!!</p>}
+                    {!Valid && <span style={{ color: "#f56d6d", margin: "3px" }}>Please Enter Valid Details!!!</span>}
                     <label>Name</label>
-                    <input value={Name} onChange={Namehandler} type="text" placeholder='Enter Your Name'></input>
+                    <input value={Name} onChange={Namehandler} type="text" placeholder='Enter customer name'></input>
                     <label>Phone No.</label>
-                    <input value={PhoneNo} onChange={Phonehandler} type="number" placeholder='Enter Your Number'></input>
+                    <input value={PhoneNo} onChange={Phonehandler} type="number" placeholder='Enter customer number'></input>
                     <label>Email Id</label>
-                    <input value={Email} onChange={Emailhandler} type="email" placeholder='Enter Your Email id'></input>
-                    <div className="formcontainer-buttoncontainer">
-                        <Link to="/" onClick={Submithandler} className="formbutton" >Add</Link>
-                        <Link className="formbutton" to="/">Cancel</Link>
+                    <input value={Email} onChange={Emailhandler} type="email" placeholder='Enter customer emailid'></input>
+                    <div className='formpage-buttonaction'>
+                        <Link to="/" onClick={Submithandler} className="formpage-formbutton" >Create</Link>
+                        <Link to="/">Cancel</Link>
                     </div>
                     {Close && <Redirect to="/" />}
                 </form>

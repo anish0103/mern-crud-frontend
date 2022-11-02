@@ -5,12 +5,11 @@ import './CSS/Navigation.css'
 
 function Navigation() {
     return (
-        <div className='header-maincontainer'>
-            <div className='header-projectname'>
-                <h2>CRUD Operation</h2>
-            </div>
-            <div className='header-button'>
-                <Link to="/add/" >Add</Link>
+        <div class="navbar">
+            <div class="navbar-container">
+                <div>
+                    <Link to="/" >CRUD Application</Link>
+                </div>
             </div>
         </div>
     )

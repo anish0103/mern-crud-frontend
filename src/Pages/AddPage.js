@@ -3,18 +3,14 @@ import React from 'react'
 import Form from '../Components/Form';
 import './CSS/AddPage.css'
 
-function AddPage(Probs) {
+function AddPage(props) {
 
     const SubmitHandler = (data) => {
-        Probs.SubmitHandler(data)
+        props.SubmitHandler(data)
     }
 
     return (
-        <div className="addpage-maincontainer">
-            <div>
-                <Form SubmitHandler={SubmitHandler} />
-            </div>
-        </div>
+        <Form SubmitHandler={SubmitHandler} />
     )
 }
 

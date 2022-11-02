@@ -2,15 +2,15 @@ import React from 'react'
 
 import EditForm from '../Components/EditForm';
 
-function EditPage(Probs) {
+function EditPage(props) {
 
     const UpdateHandler = (data) => {
-        Probs.UpdateHandler(data)
+        props.UpdateHandler(data)
     }
 
     return (
         <div>
-            <EditForm Data={Probs.Data} UpdateHandler={UpdateHandler}/>
+            <EditForm Data={props.Data} UpdateHandler={UpdateHandler}/>
         </div>
     )
 }

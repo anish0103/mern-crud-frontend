@@ -2,30 +2,37 @@ import { React, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import Navigation from './Components/Navigation';
+import Footer from './Components/Footer';
 import HomePage from './Pages/HomePage';
 import AddPage from './Pages/AddPage';
 import EditPage from './Pages/EditPage';
+import Loading from './Pages/Loading';
 
 function App() {
 
   const [UserData, SetUserData] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const GetInformation = async () => {
     const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/')
     const data = await response.json()
     SetUserData(data);
+    setLoading(false)
   }
 
   useEffect(() => {
     const GetUsers = async () => {
+      setLoading(true)
       const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/')
       const data = await response.json()
       SetUserData(data);
+      setLoading(false)
     }
     GetUsers();
   }, [])
 
   const AddInformation = async (data) => {
+    setLoading(true)
     const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -37,6 +44,7 @@ function App() {
   }
 
   const DeleteInformation = async (data) => {
+    setLoading(true)
     const response = await fetch(process.env.REACT_APP_BACKEND_URL + `/api/delete/${data}/`, {
       method: 'POST'
     })
@@ -44,6 +52,7 @@ function App() {
   }
 
   const UpdateInformation = async (data) => {
+    setLoading(true)
     const response = await fetch(process.env.REACT_APP_BACKEND_URL + `/api/update/${data.id}/`, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -66,6 +75,10 @@ function App() {
     UpdateInformation(d);
   }
 
+  if (loading) {
+    return <Loading />
+  }
+
   return (
     <Router>
       <Navigation />
@@ -81,6 +94,7 @@ function App() {
         </Route>
         <Redirect to="/" />
       </Switch>
+      <Footer />
     </Router>
   );
 }
